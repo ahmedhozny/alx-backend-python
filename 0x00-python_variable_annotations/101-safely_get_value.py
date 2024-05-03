@@ -3,13 +3,21 @@
 Return the first element of a sequence if available.
 """
 
-from typing import Any, Sequence, Union
+from typing import Any, Sequence, Union, Mapping, TypeVar
 
+T = TypeVar('T')
+Default = Union[T, None]
+Res = Union[Any, T]
 
-def safe_first_element(lst: Sequence[Any]) -> Union[Any, None]:
+def safely_get_value(dct: Mapping, key: Any, default: Default) -> Res:
     """
     Returns the first element of a sequence if available.
     Args:
-        lst (Sequence[Any]): The sequence to check.
+        dct (Mapping): The sequence to check.
+        key (Any): The key to check.
+        default (Default): The value to return if the key is not found.
     """
-    return lst[0] if lst else None
+    if key in dct:
+        return dct[key]
+    else:
+        return default
