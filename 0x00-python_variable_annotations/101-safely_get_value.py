@@ -9,6 +9,7 @@ T = TypeVar('T')
 Default = Union[T, None]
 Res = Union[Any, T]
 
+
 def safely_get_value(dct: Mapping, key: Any, default: Default) -> Res:
     """
     Returns the first element of a sequence if available.
